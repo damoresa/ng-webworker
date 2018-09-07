@@ -13,28 +13,10 @@ declare const XLSX: any;
 export const EXCEL_EXPORT = (input) => {
   // Allocate required libraries
   // Since the host may change, we'll request it from the caller
-  importScripts(`${input.protocol}//${input.host}${input.path}scripts/xlsx.full.min.js`);
+  importScripts(`${input.protocol}//${input.host}/scripts/xlsx.full.min.js`);
 
-  // Allocate the existing headers
-  const headers = input.config.header;
   // Process the body data
-  const data = input.config.body.map(row => {
-    // Transform each row into an array of KV with colId and colValue
-    const cellsData = row.cells.map((cell, index) => {
-      const element = {};
-      element[headers[index]] = cell.data;
-      return element;
-    });
-
-    // Finally, aggregate cells on a single object
-    // Tried Object.assign but the generated minified output failed on browser
-    const output = {};
-    cellsData.forEach((cell) => {
-      const cellKey = Object.keys(cell)[0];
-      output[cellKey] = cell[cellKey];
-    });
-    return output;
-  });
+  const data = input.config.body;
 
   const worksheet: WorkSheet = XLSX.utils.json_to_sheet(data);
   const workbook: WorkBook = XLSX.utils.book_new();

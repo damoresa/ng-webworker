@@ -1,0 +1,58 @@
+<mat-card class="main-card">
+  <mat-card-header>
+    <mat-card-title><b>Excel generation showcase</b></mat-card-title>
+    <mat-card-subtitle>
+      This section features an Excel file generation that exports the data from the displayed table
+      using a <i>web worker</i> to keep the ui thread performant. The point of this example is to show
+      how to import external scripts into the <i>web worker</i> script.
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="buttons-container">
+      <button mat-stroked-button (click)="exportExcel()">Export</button>
+    </div>
+    <div>
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+        </ng-container>
+
+        <!-- Driver Column -->
+        <ng-container matColumnDef="driver">
+          <th mat-header-cell *matHeaderCellDef>Driver</th>
+          <td mat-cell *matCellDef="let element">{{ element.driver }}</td>
+        </ng-container>
+
+        <!-- Seasons Column -->
+        <ng-container matColumnDef="seasons">
+          <th mat-header-cell *matHeaderCellDef>Seasons</th>
+          <td mat-cell *matCellDef="let element">{{ element.seasons }}</td>
+        </ng-container>
+
+        <!-- Entries Column -->
+        <ng-container matColumnDef="entries">
+          <th mat-header-cell *matHeaderCellDef>Entries</th>
+          <td mat-cell *matCellDef="let element">{{ element.entries }}</td>
+        </ng-container>
+
+        <!-- Wins Column -->
+        <ng-container matColumnDef="wins">
+          <th mat-header-cell *matHeaderCellDef>Wins</th>
+          <td mat-cell *matCellDef="let element">{{ element.wins }}</td>
+        </ng-container>
+
+        <!-- Percentage Column -->
+        <ng-container matColumnDef="percentage">
+          <th mat-header-cell *matHeaderCellDef>Percentage</th>
+          <td mat-cell *matCellDef="let element">{{ element.percentage }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+  </mat-card-content>
+</mat-card>

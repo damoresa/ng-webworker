@@ -1,0 +1,12 @@
+table {
+  width: 100%;
+}
+
+mat-card-content > div {
+  display: flex;
+  padding: 0.5rem;
+}
+
+mat-card-content > div.buttons-container {
+  justify-content: end;
+}

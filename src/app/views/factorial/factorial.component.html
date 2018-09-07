@@ -1,0 +1,46 @@
+<mat-card class="main-card">
+  <mat-card-header>
+    <mat-card-title><b>Factorial calculation showcase</b></mat-card-title>
+    <mat-card-subtitle>
+      This section features factorial calculation with added overhead in order to show how <i>web workers</i>
+      impact the rendering performance by offloading heavy tasks from the main ui thread.
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="buttons-container">
+      <div>
+        <mat-form-field>
+          <input matInput placeholder="Highest number" [(ngModel)]="maxFactorial">
+        </mat-form-field>
+      </div>
+      <div>
+        <button mat-stroked-button (click)="factorialWithWorker()">Factorial with worker</button>
+      </div>
+      <div>
+        <button mat-stroked-button (click)="factorialWithoutWorker()">Factorial without worker</button>
+      </div>
+    </div>
+    <div class="results-container">
+      <div>
+        <p><b>Web worker results</b></p>
+        <p>Schedule time: {{ workerResults.scheduleTime }} ms</p>
+        <p>Execution time: {{ workerResults.executionTime }} ms</p>
+        <p>Number of executions: {{ workerResults.executions }}</p>
+        <p>Results:</p>
+        <p *ngFor="let result of workerResults.executionResults">
+          <i>{{ result.number }}</i>: {{ result.result }}
+        </p>
+      </div>
+      <div>
+        <p><b>Non web worker results</b></p>
+        <p>Schedule time: {{ nonWorkerResults.scheduleTime }} ms</p>
+        <p>Execution time: {{ nonWorkerResults.executionTime }} ms</p>
+        <p>Number of executions: {{ nonWorkerResults.executions }}</p>
+        <p>Results:</p>
+        <p *ngFor="let result of nonWorkerResults.executionResults">
+          <i>{{ result.number }}</i>: {{ result.result }}
+        </p>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

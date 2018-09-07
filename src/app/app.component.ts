@@ -6,5 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'ng-webworker';
+  links = [
+    {
+      text: 'Excel export',
+      path: '/excel'
+    },
+    {
+      text: 'Factorial',
+      path: '/factorial'
+    }
+  ];
 }

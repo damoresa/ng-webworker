@@ -1,0 +1,25 @@
+.buttons-container {
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem;
+}
+
+.buttons-container > div {
+  display: flex;
+  flex: 33%;
+  justify-content: center;
+}
+
+.buttons-container > div > mat-form-field {
+  width: 100%;
+}
+
+.results-container {
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem;
+}
+
+.results-container > div {
+  flex: 50%;
+}
