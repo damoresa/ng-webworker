@@ -4,11 +4,6 @@ import { WebworkerService } from './../../worker/webworker.service';
 import { FACTORIAL_SCRIPT } from './factorial.script';
 import { ExecutionResultsModel } from './model/execution-results.model';
 
-// Easiest way to be able to use the Web workers API on our TypeScript files is to declare
-// the specific API functions we want to use according to:
-// https://github.com/Microsoft/TypeScript/issues/20595#issuecomment-351030256
-declare function postMessage(message: any, transfer?: any[]): void;
-
 @Component({
   selector: 'factorial-component',
   templateUrl: './factorial.component.html',
