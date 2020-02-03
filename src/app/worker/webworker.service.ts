@@ -72,7 +72,7 @@ export class WebworkerService {
    * @param worker worker for which the promise will be created.
    * @param data data that will be passed into the worker object.
    */
-  private createPromiseForWorker<T>(worker: Worker, data: any) {
+  private createPromiseForWorker<T>(worker: Worker, data: any): Promise<T> {
     return new Promise<T>((resolve, reject) => {
       worker.addEventListener('message', (event) => resolve(event.data));
       worker.addEventListener('error', reject);
